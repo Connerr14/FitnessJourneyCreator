@@ -10,7 +10,7 @@
         public String? description { get; set; }
 
         // FK
-        public int PlanId { get; set; }
+        public int WorkoutPlanId { get; set; }
 
          // Navigation back to the workout plan
         public WorkoutPlan WorkoutPlan { get; set; }

@@ -3,7 +3,7 @@
     public class WorkoutPlan
     {
         // Primary Key
-        public int PlanId { get; set; }
+        public int WorkoutPlanId { get; set; }
 
         public required string PlanName { get; set; }
         public required string PlanDescription { get; set; }

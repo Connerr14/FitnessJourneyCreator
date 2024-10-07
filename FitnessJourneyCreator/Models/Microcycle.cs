@@ -3,7 +3,8 @@
     public class Microcycle
     {
         // Primary Key
-        public int MircocycleId { get; set; }
+        public int MicrocycleId { get; set; }
+
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
