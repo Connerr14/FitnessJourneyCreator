@@ -2,10 +2,17 @@
 {
     public class Log
     {
+        // Primary Key
         public int LogId { get; set; }
-        public int WorkoutExerciseId { get; set; }
         public DateTime DateLogged { get; set; }
-        public decimal? Weight { get; set; }  // Weight can be nullable
-        public int? Reps { get; set; }  // Reps can also be nullable
+        public decimal? Weight { get; set; }
+        public int SetsCompleted;
+        public int? RepsCompleted { get; set; }
+
+        // FK
+        public int WorkoutExerciseId { get; set; }
+
+        // Linking back to WorkoutExercise table
+        public WorkoutExercise WorkoutExercise { get; set; }
     }
 }
