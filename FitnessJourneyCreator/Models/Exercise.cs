@@ -1,0 +1,11 @@
+﻿namespace FitnessJourneyCreator.Models
+{
+    public class Exercise
+    {
+        public int ExerciseId { get; set; }
+        public string ExerciseName { get; set; }
+        public string Description { get; set; }
+        public string? demostrationLink { get; set; }
+
+    }
+}
