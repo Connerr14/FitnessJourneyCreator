@@ -7,11 +7,18 @@ namespace FitnessJourneyCreator.Models
         // Primary Key
         public int MacrocycleId { get; set; }
 
+        [Required(ErrorMessage = "Name is required")]
+        [Display(Name = "Macrocycle Name")]
+        public String MacrocycleName { get; set; }
+
         [Required(ErrorMessage = "Start Date is required")]
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "End Date is required")]
+        [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
+
         public String? Description { get; set; }
 
         // FK

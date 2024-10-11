@@ -1,4 +1,4 @@
-﻿@model FitnessJourneyCreator.Models.Macrocycle
+﻿@model FitnessJourneyCreator.Models.Mesocycle
 
 @{
     ViewData["Title"] = "Details";
@@ -7,14 +7,14 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Macrocycle</h4>
+    <h4>Mesocycle</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MacrocycleName)
+            @Html.DisplayNameFor(model => model.MesocycleName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MacrocycleName)
+            @Html.DisplayFor(model => model.MesocycleName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.StartDate)
@@ -29,20 +29,14 @@
             @Html.DisplayFor(model => model.EndDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Macrocycle)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WorkoutPlan)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WorkoutPlan.WorkoutPlanId)
+            @Html.DisplayFor(model => model.Macrocycle.MacrocycleName)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.MacrocycleId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.MesocycleId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

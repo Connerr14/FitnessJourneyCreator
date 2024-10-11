@@ -1,4 +1,4 @@
-﻿@model FitnessJourneyCreator.Models.Macrocycle
+﻿@model FitnessJourneyCreator.Models.Mesocycle
 
 @{
     ViewData["Title"] = "Create";
@@ -6,16 +6,16 @@
 
 <h1>Create</h1>
 
-<h4>Macrocycle</h4>
+<h4>Mesocycle</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MacrocycleName" class="control-label"></label>
-                <input asp-for="MacrocycleName" class="form-control" />
-                <span asp-validation-for="MacrocycleName" class="text-danger"></span>
+                <label asp-for="MesocycleName" class="control-label"></label>
+                <input asp-for="MesocycleName" class="form-control" />
+                <span asp-validation-for="MesocycleName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
@@ -28,13 +28,8 @@
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WorkoutPlanId" class="control-label"></label>
-                <select asp-for="WorkoutPlanId" class ="form-control" asp-items="ViewBag.WorkoutPlanId"></select>
+                <label asp-for="MacrocycleId" class="control-label"></label>
+                <select asp-for="MacrocycleId" class ="form-control" asp-items="ViewBag.MacrocycleId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -10,23 +10,23 @@ using FitnessJourneyCreator.Models;
 
 namespace FitnessJourneyCreator.Controllers
 {
-    public class MacrocyclesController : Controller
+    public class MesocyclesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MacrocyclesController(ApplicationDbContext context)
+        public MesocyclesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Macrocycles
+        // GET: Mesocycles
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Macrocycles.Include(m => m.WorkoutPlan);
+            var applicationDbContext = _context.Mesocycles.Include(m => m.Macrocycle);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Macrocycles/Details/5
+        // GET: Mesocycles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +34,42 @@ namespace FitnessJourneyCreator.Controllers
                 return NotFound();
             }
 
-            var macrocycle = await _context.Macrocycles
-                .Include(m => m.WorkoutPlan)
-                .FirstOrDefaultAsync(m => m.MacrocycleId == id);
-            if (macrocycle == null)
+            var mesocycle = await _context.Mesocycles
+                .Include(m => m.Macrocycle)
+                .FirstOrDefaultAsync(m => m.MesocycleId == id);
+            if (mesocycle == null)
             {
                 return NotFound();
             }
 
-            return View(macrocycle);
+            return View(mesocycle);
         }
 
-        // GET: Macrocycles/Create
+        // GET: Mesocycles/Create
         public IActionResult Create()
         {
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId");
+            ViewData["MacrocycleId"] = new SelectList(_context.Macrocycles, "MacrocycleId", "MacrocycleName");
             return View();
         }
 
-        // POST: Macrocycles/Create
+        // POST: Mesocycles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MacrocycleId,MacrocycleName,StartDate,EndDate,Description,WorkoutPlanId")] Macrocycle macrocycle)
+        public async Task<IActionResult> Create([Bind("MesocycleId,MesocycleName,StartDate,EndDate,MacrocycleId")] Mesocycle mesocycle)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(macrocycle);
+                _context.Add(mesocycle);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
-            return View(macrocycle);
+            ViewData["MacrocycleId"] = new SelectList(_context.Macrocycles, "MacrocycleId", "MacrocycleName", mesocycle.MacrocycleId);
+            return View(mesocycle);
         }
 
-        // GET: Macrocycles/Edit/5
+        // GET: Mesocycles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +77,23 @@ namespace FitnessJourneyCreator.Controllers
                 return NotFound();
             }
 
-            var macrocycle = await _context.Macrocycles.FindAsync(id);
-            if (macrocycle == null)
+            var mesocycle = await _context.Mesocycles.FindAsync(id);
+            if (mesocycle == null)
             {
                 return NotFound();
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
-            return View(macrocycle);
+            ViewData["MacrocycleId"] = new SelectList(_context.Macrocycles, "MacrocycleId", "MacrocycleName", mesocycle.MacrocycleId);
+            return View(mesocycle);
         }
 
-        // POST: Macrocycles/Edit/5
+        // POST: Mesocycles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MacrocycleId,MacrocycleName,StartDate,EndDate,Description,WorkoutPlanId")] Macrocycle macrocycle)
+        public async Task<IActionResult> Edit(int id, [Bind("MesocycleId,MesocycleName,StartDate,EndDate,MacrocycleId")] Mesocycle mesocycle)
         {
-            if (id != macrocycle.MacrocycleId)
+            if (id != mesocycle.MesocycleId)
             {
                 return NotFound();
             }
@@ -102,12 +102,12 @@ namespace FitnessJourneyCreator.Controllers
             {
                 try
                 {
-                    _context.Update(macrocycle);
+                    _context.Update(mesocycle);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MacrocycleExists(macrocycle.MacrocycleId))
+                    if (!MesocycleExists(mesocycle.MesocycleId))
                     {
                         return NotFound();
                     }
@@ -118,11 +118,11 @@ namespace FitnessJourneyCreator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
-            return View(macrocycle);
+            ViewData["MacrocycleId"] = new SelectList(_context.Macrocycles, "MacrocycleId", "MacrocycleName", mesocycle.MacrocycleId);
+            return View(mesocycle);
         }
 
-        // GET: Macrocycles/Delete/5
+        // GET: Mesocycles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,35 +130,35 @@ namespace FitnessJourneyCreator.Controllers
                 return NotFound();
             }
 
-            var macrocycle = await _context.Macrocycles
-                .Include(m => m.WorkoutPlan)
-                .FirstOrDefaultAsync(m => m.MacrocycleId == id);
-            if (macrocycle == null)
+            var mesocycle = await _context.Mesocycles
+                .Include(m => m.Macrocycle)
+                .FirstOrDefaultAsync(m => m.MesocycleId == id);
+            if (mesocycle == null)
             {
                 return NotFound();
             }
 
-            return View(macrocycle);
+            return View(mesocycle);
         }
 
-        // POST: Macrocycles/Delete/5
+        // POST: Mesocycles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var macrocycle = await _context.Macrocycles.FindAsync(id);
-            if (macrocycle != null)
+            var mesocycle = await _context.Mesocycles.FindAsync(id);
+            if (mesocycle != null)
             {
-                _context.Macrocycles.Remove(macrocycle);
+                _context.Mesocycles.Remove(mesocycle);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MacrocycleExists(int id)
+        private bool MesocycleExists(int id)
         {
-            return _context.Macrocycles.Any(e => e.MacrocycleId == id);
+            return _context.Mesocycles.Any(e => e.MesocycleId == id);
         }
     }
 }

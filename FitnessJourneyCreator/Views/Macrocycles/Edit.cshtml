@@ -14,6 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MacrocycleId" />
             <div class="form-group">
+                <label asp-for="MacrocycleName" class="control-label"></label>
+                <input asp-for="MacrocycleName" class="form-control" />
+                <span asp-validation-for="MacrocycleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
                 <input asp-for="StartDate" class="form-control" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>

@@ -10,23 +10,22 @@ using FitnessJourneyCreator.Models;
 
 namespace FitnessJourneyCreator.Controllers
 {
-    public class MacrocyclesController : Controller
+    public class ExercisesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MacrocyclesController(ApplicationDbContext context)
+        public ExercisesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Macrocycles
+        // GET: Exercises
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Macrocycles.Include(m => m.WorkoutPlan);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.Exercises.ToListAsync());
         }
 
-        // GET: Macrocycles/Details/5
+        // GET: Exercises/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +33,39 @@ namespace FitnessJourneyCreator.Controllers
                 return NotFound();
             }
 
-            var macrocycle = await _context.Macrocycles
-                .Include(m => m.WorkoutPlan)
-                .FirstOrDefaultAsync(m => m.MacrocycleId == id);
-            if (macrocycle == null)
+            var exercise = await _context.Exercises
+                .FirstOrDefaultAsync(m => m.ExerciseId == id);
+            if (exercise == null)
             {
                 return NotFound();
             }
 
-            return View(macrocycle);
+            return View(exercise);
         }
 
-        // GET: Macrocycles/Create
+        // GET: Exercises/Create
         public IActionResult Create()
         {
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId");
             return View();
         }
 
-        // POST: Macrocycles/Create
+        // POST: Exercises/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MacrocycleId,MacrocycleName,StartDate,EndDate,Description,WorkoutPlanId")] Macrocycle macrocycle)
+        public async Task<IActionResult> Create([Bind("ExerciseId,ExerciseName,Description,DemostrationLink")] Exercise exercise)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(macrocycle);
+                _context.Add(exercise);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
-            return View(macrocycle);
+            return View(exercise);
         }
 
-        // GET: Macrocycles/Edit/5
+        // GET: Exercises/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +73,22 @@ namespace FitnessJourneyCreator.Controllers
                 return NotFound();
             }
 
-            var macrocycle = await _context.Macrocycles.FindAsync(id);
-            if (macrocycle == null)
+            var exercise = await _context.Exercises.FindAsync(id);
+            if (exercise == null)
             {
                 return NotFound();
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
-            return View(macrocycle);
+            return View(exercise);
         }
 
-        // POST: Macrocycles/Edit/5
+        // POST: Exercises/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MacrocycleId,MacrocycleName,StartDate,EndDate,Description,WorkoutPlanId")] Macrocycle macrocycle)
+        public async Task<IActionResult> Edit(int id, [Bind("ExerciseId,ExerciseName,Description,DemostrationLink")] Exercise exercise)
         {
-            if (id != macrocycle.MacrocycleId)
+            if (id != exercise.ExerciseId)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace FitnessJourneyCreator.Controllers
             {
                 try
                 {
-                    _context.Update(macrocycle);
+                    _context.Update(exercise);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MacrocycleExists(macrocycle.MacrocycleId))
+                    if (!ExerciseExists(exercise.ExerciseId))
                     {
                         return NotFound();
                     }
@@ -118,11 +113,10 @@ namespace FitnessJourneyCreator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
-            return View(macrocycle);
+            return View(exercise);
         }
 
-        // GET: Macrocycles/Delete/5
+        // GET: Exercises/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,35 +124,34 @@ namespace FitnessJourneyCreator.Controllers
                 return NotFound();
             }
 
-            var macrocycle = await _context.Macrocycles
-                .Include(m => m.WorkoutPlan)
-                .FirstOrDefaultAsync(m => m.MacrocycleId == id);
-            if (macrocycle == null)
+            var exercise = await _context.Exercises
+                .FirstOrDefaultAsync(m => m.ExerciseId == id);
+            if (exercise == null)
             {
                 return NotFound();
             }
 
-            return View(macrocycle);
+            return View(exercise);
         }
 
-        // POST: Macrocycles/Delete/5
+        // POST: Exercises/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var macrocycle = await _context.Macrocycles.FindAsync(id);
-            if (macrocycle != null)
+            var exercise = await _context.Exercises.FindAsync(id);
+            if (exercise != null)
             {
-                _context.Macrocycles.Remove(macrocycle);
+                _context.Exercises.Remove(exercise);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MacrocycleExists(int id)
+        private bool ExerciseExists(int id)
         {
-            return _context.Macrocycles.Any(e => e.MacrocycleId == id);
+            return _context.Exercises.Any(e => e.ExerciseId == id);
         }
     }
 }
