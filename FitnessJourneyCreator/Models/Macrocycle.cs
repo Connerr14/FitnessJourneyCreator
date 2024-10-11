@@ -1,22 +1,28 @@
-﻿namespace FitnessJourneyCreator.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FitnessJourneyCreator.Models
 {
     public class Macrocycle
     {
         // Primary Key
         public int MacrocycleId { get; set; }
 
-        public DateTime StartDate { get; set; } 
+        [Required(ErrorMessage = "Start Date is required")]
+        public DateTime StartDate { get; set; }
+
+        [Required(ErrorMessage = "End Date is required")]
         public DateTime EndDate { get; set; }
-        public String? description { get; set; }
+        public String? Description { get; set; }
 
         // FK
+        [Required(ErrorMessage = "You must have a workout plan created")]
         public int WorkoutPlanId { get; set; }
 
          // Navigation back to the workout plan
-        public WorkoutPlan WorkoutPlan { get; set; }
+        public WorkoutPlan? WorkoutPlan { get; set; }
 
         // Linking Mesocycle to Macrocycle 
-        public List<Mesocycle> Mesocycles { get; set; }
+        public List<Mesocycle>? Mesocycles { get; set; }
 
     }
 }
