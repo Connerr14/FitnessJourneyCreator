@@ -18,7 +18,16 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #D2D2CF !important;
+}
+
+h1 {
+    margin-bottom: 0.3em;
+}
+
+.navbar {
+    background-color: #3c83ff !important;
 }
 
 .instructions {
@@ -28,6 +37,11 @@ body {
 .instructions a {
     margin-right: 2em;
     text-decoration: none;
+    background-color: white;
+    padding: 0.3em;
+    border-radius: 4px;
+}
 
-
+footer {
+    background-color: #D2D2CF !important;
 }

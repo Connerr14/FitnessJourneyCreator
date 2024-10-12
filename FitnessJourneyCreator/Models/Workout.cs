@@ -26,6 +26,7 @@ namespace FitnessJourneyCreator.Models
         // Navigation back to microcyle table
         public Microcycle? Microcycle { get; set; }
 
+
         // Linking forward to WorkoutExercise table
         public List<WorkoutExercise>? WorkoutExercises { get; set; }
     }

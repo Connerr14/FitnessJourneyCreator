@@ -48,7 +48,7 @@ namespace FitnessJourneyCreator.Controllers
         // GET: Macrocycles/Create
         public IActionResult Create()
         {
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId");
+            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "PlanName");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace FitnessJourneyCreator.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
+            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "PlanName", macrocycle.WorkoutPlanId);
             return View(macrocycle);
         }
 
@@ -118,7 +118,7 @@ namespace FitnessJourneyCreator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
+            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "PlanName", macrocycle.WorkoutPlanId);
             return View(macrocycle);
         }
 

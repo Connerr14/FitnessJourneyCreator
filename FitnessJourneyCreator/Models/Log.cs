@@ -27,12 +27,12 @@ namespace FitnessJourneyCreator.Models
         [Display(Name = "Reps Completed")]
         public int RepsCompleted { get; set; }
 
+        // FK
         [Required]
         [Display(Name = "Workout Exercise")]
-        // FK
         public int WorkoutExerciseId { get; set; }
 
-        
+        [Display(Name = "Workout Exercise")]
         // Linking back to WorkoutExercise table
         public WorkoutExercise? WorkoutExercise { get; set; }
     }

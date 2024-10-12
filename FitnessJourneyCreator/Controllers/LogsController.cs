@@ -22,8 +22,12 @@ namespace FitnessJourneyCreator.Controllers
         // GET: Logs
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Logs.Include(l => l.WorkoutExercise);
-            return View(await applicationDbContext.ToListAsync());
+            // Adding a join between logs and the exercise table
+            var logs = _context.Logs
+                .Include(l => l.WorkoutExercise)
+                .ThenInclude(C => C.Exercise)
+                .ToList();
+            return View(logs);
         }
 
         // GET: Logs/Details/5
@@ -36,6 +40,7 @@ namespace FitnessJourneyCreator.Controllers
 
             var log = await _context.Logs
                 .Include(l => l.WorkoutExercise)
+                    .ThenInclude(we => we.Exercise)
                 .FirstOrDefaultAsync(m => m.LogId == id);
             if (log == null)
             {
@@ -48,8 +53,20 @@ namespace FitnessJourneyCreator.Controllers
         // GET: Logs/Create
         public IActionResult Create()
         {
-            ViewData["WorkoutExerciseId"] = new SelectList(_context.WorkoutExercises, "WorkoutExerciseId", "WorkoutExerciseId");
+            // Adding a join between logs and the exercise table
+            ViewData["WorkoutExerciseId"] = new SelectList(
+                _context.WorkoutExercises.Include(we => we.Exercise)
+                    .Select(we => new
+                    {
+                        WorkoutExerciseId = we.WorkoutExerciseId,
+                        ExerciseName = we.Exercise.ExerciseName
+                    }),
+                "WorkoutExerciseId",
+                "ExerciseName"
+            );
+
             return View();
+
         }
 
         // POST: Logs/Create
@@ -65,7 +82,19 @@ namespace FitnessJourneyCreator.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutExerciseId"] = new SelectList(_context.WorkoutExercises, "WorkoutExerciseId", "WorkoutExerciseId", log.WorkoutExerciseId);
+
+            // Adding a join between logs and the exercise table
+            ViewData["WorkoutExerciseId"] = new SelectList(
+            _context.WorkoutExercises.Include(we => we.Exercise) // Include Exercise data
+                .Select(we => new
+                {
+                    WorkoutExerciseId = we.WorkoutExerciseId,
+                    ExerciseName = we.Exercise.ExerciseName
+                }),
+            "WorkoutExerciseId",
+            "ExerciseName"
+        );
+
             return View(log);
         }
 
@@ -82,7 +111,19 @@ namespace FitnessJourneyCreator.Controllers
             {
                 return NotFound();
             }
-            ViewData["WorkoutExerciseId"] = new SelectList(_context.WorkoutExercises, "WorkoutExerciseId", "WorkoutExerciseId", log.WorkoutExerciseId);
+
+
+            // Adding a join between logs and the exercise table
+            ViewData["WorkoutExerciseId"] = new SelectList(
+                _context.WorkoutExercises.Include(we => we.Exercise)
+                    .Select(we => new
+                    {
+                        WorkoutExerciseId = we.WorkoutExerciseId,
+                        ExerciseName = we.Exercise.ExerciseName
+                    }),
+                "WorkoutExerciseId",
+                "ExerciseName"
+            );
             return View(log);
         }
 
@@ -118,7 +159,19 @@ namespace FitnessJourneyCreator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkoutExerciseId"] = new SelectList(_context.WorkoutExercises, "WorkoutExerciseId", "WorkoutExerciseId", log.WorkoutExerciseId);
+
+            // Adding a join between logs and the exercise table
+            ViewData["WorkoutExerciseId"] = new SelectList(
+                _context.WorkoutExercises.Include(we => we.Exercise)
+                    .Select(we => new
+                    {
+                        WorkoutExerciseId = we.WorkoutExerciseId,
+                        ExerciseName = we.Exercise.ExerciseName
+                    }),
+                "WorkoutExerciseId",
+                "ExerciseName"
+            );
+            
             return View(log);
         }
 
@@ -132,6 +185,7 @@ namespace FitnessJourneyCreator.Controllers
 
             var log = await _context.Logs
                 .Include(l => l.WorkoutExercise)
+                    .ThenInclude(we => we.Exercise)
                 .FirstOrDefaultAsync(m => m.LogId == id);
             if (log == null)
             {

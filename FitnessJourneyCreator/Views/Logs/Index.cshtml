@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.RepsCompleted)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WorkoutExercise)
+                @Html.DisplayNameFor(model => model.WorkoutExerciseId)
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.RepsCompleted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WorkoutExercise.WorkoutExerciseId)
+                @Html.DisplayFor(modelItem => item.WorkoutExercise.Exercise.ExerciseName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.LogId">Edit</a> |
