@@ -23,11 +23,14 @@ namespace FitnessJourneyCreator.Models
 
         // FK
         [Required(ErrorMessage = "You must have a workout plan created")]
+        [Display(Name = "Workout Plan")]
         public int WorkoutPlanId { get; set; }
 
-         // Navigation back to the workout plan
+        [Display(Name = "Workout Plan")]
+        // Navigation back to the workout plan
         public WorkoutPlan? WorkoutPlan { get; set; }
 
+        [Display(Name = "Mesocycle")]
         // Linking Mesocycle to Macrocycle 
         public List<Mesocycle>? Mesocycles { get; set; }
 

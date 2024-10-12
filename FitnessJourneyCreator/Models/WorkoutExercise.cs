@@ -17,7 +17,10 @@ namespace FitnessJourneyCreator.Models
         public int Reps { get; set; }
 
         // Foreign Keys
+        [Display(Name = "Workout")]
         public int WorkoutId { get; set; }
+
+        [Display(Name = "Exercise")]
         public int ExerciseId { get; set; }
 
         // Navigation to the workout table

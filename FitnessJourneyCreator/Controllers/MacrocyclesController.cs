@@ -82,7 +82,7 @@ namespace FitnessJourneyCreator.Controllers
             {
                 return NotFound();
             }
-            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "WorkoutPlanId", macrocycle.WorkoutPlanId);
+            ViewData["WorkoutPlanId"] = new SelectList(_context.WorkoutPlans, "WorkoutPlanId", "PlanName", macrocycle.WorkoutPlanId);
             return View(macrocycle);
         }
 

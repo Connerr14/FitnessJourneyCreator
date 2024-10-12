@@ -15,6 +15,7 @@ namespace FitnessJourneyCreator.Models
         [Display(Name = "Demonstration Link")]
         public string? DemostrationLink { get; set; }
 
+        [Display(Name = "Workout Exercise")]
         // Linking back to WorkoutExercise table
         public WorkoutExercise? workoutExercise { get; set; }
 

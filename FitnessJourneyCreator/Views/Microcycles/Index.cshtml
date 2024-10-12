@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<FitnessJourneyCreator.Models.Microcycle>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Microcycles";
 }
 
-<h1>Index</h1>
+<h1>Your Microcycles</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="instructions">
+    <a asp-action="Create">Create a New Microcycle</a>
+    <a asp-controller="Workouts" asp-action="Index">Modify workouts</a>
 </p>
 <table class="table">
     <thead>

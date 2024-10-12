@@ -21,8 +21,11 @@ namespace FitnessJourneyCreator.Models
 
         // Forign Key
         [Required(ErrorMessage = "You must have a macrocyle created")]
+
+        [Display(Name = "Macrocycle")]
         public int MacrocycleId { get; set; }
 
+        [Display(Name = "Macrocycle")]
         // Linking back to Macrocycle
         public Macrocycle? Macrocycle { get; set; }
 

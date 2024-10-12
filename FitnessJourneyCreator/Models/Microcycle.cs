@@ -21,8 +21,11 @@ namespace FitnessJourneyCreator.Models
 
         // Foreign Key
         [Required(ErrorMessage = "You must have a mesocycle created")]
+
+        [Display(Name = "Mesocycle")]
         public int MesocycleId { get; set; }
 
+        
         // Navigation back to mesocycle
         public Mesocycle? Mesocycle { get; set; }
 

@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<FitnessJourneyCreator.Models.Workout>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Workouts";
 }
 
-<h1>Index</h1>
+<h1>Your Workouts</h1>
 
-<p>
+<p class="instructions">
     <a asp-action="Create">Create New</a>
+    <a asp-controller="WorkoutExercises" asp-action="Index">Add Exercises to Your Workouts</a>
 </p>
 <table class="table">
     <thead>

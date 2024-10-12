@@ -10,6 +10,13 @@
 *.userosscache
 *.sln.docstates
 
+# Database connection string file
+appsettings.json
+
+# Dont ignore the log view files
+!logs/*.cshtml
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

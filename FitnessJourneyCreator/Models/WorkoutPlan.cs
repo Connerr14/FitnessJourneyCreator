@@ -2,9 +2,11 @@
 
 namespace FitnessJourneyCreator.Models
 {
+    // TO-DO - Add annotations like "lbs", - Add Page for easy navigation, - add nav bar links, add styling.
     public class WorkoutPlan
     {
         // Primary Key
+        [Display(Name = "Workout Plan")]
         public int WorkoutPlanId { get; set; }
 
         [Display(Name = "Plan Name")]

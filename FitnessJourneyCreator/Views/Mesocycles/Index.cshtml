@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<FitnessJourneyCreator.Models.Mesocycle>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Mesocycles";
 }
 
-<h1>Index</h1>
+<h1>Your Mesocycles</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="instructions">
+    <a asp-action="Create">Create a New Mesocycle</a>
+    <a asp-controller="Microcycles" asp-action="Index">Modify Microcycles</a>
 </p>
 <table class="table">
     <thead>

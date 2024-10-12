@@ -20,3 +20,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.instructions {
+    font-size: 1em;
+}
+
+.instructions a {
+    margin-right: 2em;
+    text-decoration: none;
+
+
+}
