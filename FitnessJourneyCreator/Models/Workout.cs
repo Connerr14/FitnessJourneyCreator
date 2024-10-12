@@ -19,6 +19,8 @@ namespace FitnessJourneyCreator.Models
         // Foreign Key
         [Required(ErrorMessage = "You must have a microcycle created")]
         [Display(Name = "Microcycle")]
+
+
         public int MicrocycleId { get; set; }
 
         // Navigation back to microcyle table

@@ -26,6 +26,7 @@ namespace FitnessJourneyCreator.Models
         [Display(Name = "Workout Plan")]
         public int WorkoutPlanId { get; set; }
 
+       
         [Display(Name = "Workout Plan")]
         // Navigation back to the workout plan
         public WorkoutPlan? WorkoutPlan { get; set; }

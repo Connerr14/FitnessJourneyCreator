@@ -49,7 +49,7 @@ namespace FitnessJourneyCreator.Controllers
         // GET: WorkoutExercises/Create
         public IActionResult Create()
         {
-            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "ExerciseId", "ExerciseId");
+            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "ExerciseId", "ExerciseName");
             ViewData["WorkoutId"] = new SelectList(_context.Workouts, "WorkoutId", "WorkoutName");
             return View();
         }
@@ -85,7 +85,7 @@ namespace FitnessJourneyCreator.Controllers
             {
                 return NotFound();
             }
-            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "ExerciseId", "ExerciseId", workoutExercise.ExerciseId);
+            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "ExerciseId", "ExerciseName", workoutExercise.ExerciseId);
             ViewData["WorkoutId"] = new SelectList(_context.Workouts, "WorkoutId", "WorkoutName", workoutExercise.WorkoutId);
             return View(workoutExercise);
         }

@@ -14,6 +14,9 @@ namespace FitnessJourneyCreator.Models
         public DateTime DateLogged { get; set; }
 
         [Column(TypeName = "decimal(5, 2)")]
+
+        // Adding the subscript "lbs" in the submission
+        [DisplayFormat(DataFormatString = "{0} lbs")]
         public decimal? Weight { get; set; }
 
         [Required]
