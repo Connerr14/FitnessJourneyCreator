@@ -25,12 +25,13 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish "C:\Users\conne\source\repos\FitnessJourneyCreator\FitnessJourneyCreator.sln" -c Release -o "${{ github.workspace }}\myapp"
+        run: dotnet publish -c Release -o ${{C:\Users\conne\source\repos\FitnessJourneyCreator\FitnessJourneyCreator.sln}}/myapp
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{ github.workspace }}
+          path: ${{GITHUB_WORKSPACE}}/myapp
 
   deploy:
     runs-on: windows-latest
