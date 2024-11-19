@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FitnessJourneyCreator.Data;
 using FitnessJourneyCreator.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FitnessJourneyCreator.Controllers
 {
+    [Authorize]
     public class LogsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace FitnessJourneyCreator.Controllers
         }
 
         // GET: Logs
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             // Adding a join between logs and the exercise table

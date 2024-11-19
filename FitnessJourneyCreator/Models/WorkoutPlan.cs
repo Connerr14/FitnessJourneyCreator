@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
 namespace FitnessJourneyCreator.Models
 {
-    // TO-DO - Add annotations like "lbs", - Add Page for easy navigation, - add nav bar links, add styling.
     public class WorkoutPlan
     {
         // Primary Key
@@ -20,8 +20,5 @@ namespace FitnessJourneyCreator.Models
 
         // Linking PlanId to Macrocycle table
         public List<Macrocycle>? Macrocycles { get; set; }
-
-
-
     }
 }

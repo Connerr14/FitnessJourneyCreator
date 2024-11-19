@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FitnessJourneyCreator.Data;
 using FitnessJourneyCreator.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FitnessJourneyCreator.Controllers
 {
+    [Authorize]
     public class WorkoutPlansController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace FitnessJourneyCreator.Controllers
         }
 
         // GET: WorkoutPlans
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.WorkoutPlans.ToListAsync());

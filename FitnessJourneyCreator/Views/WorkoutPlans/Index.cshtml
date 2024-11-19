@@ -4,12 +4,21 @@
     ViewData["Title"] = "Workout Plans";
 }
 
-<h1>Your Workout Plans</h1>
+<h1>Most Popular Workout Plans</h1>
 
-<p class="instructions">
-    <a asp-action="Create">Create a New Workout Plan</a>
-    <a asp-controller="Macrocycles" asp-action="Index">Modify Macrocycles</a>
-</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <p class="instructions">
+        <a asp-action="Create">Create a New Workout Plan</a>
+        <a asp-controller="Macrocycles" asp-action="Index">Modify Macrocycles</a>
+    </p>
+}
+else
+{
+    <p class="instructions">
+        <a asp-area="Identity" asp-page="/Account/Login">Log in to see the plan details</a>
+     </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -37,11 +46,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.WorkoutPlanId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.WorkoutPlanId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.WorkoutPlanId">Delete</a>
-            </td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.WorkoutPlanId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.WorkoutPlanId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.WorkoutPlanId">Delete</a>
+                </td>
+            }
         </tr>
 }
     </tbody>
