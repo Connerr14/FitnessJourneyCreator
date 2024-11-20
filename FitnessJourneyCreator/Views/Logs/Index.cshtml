@@ -6,9 +6,18 @@
 
 <h1>Exercise Logs</h1>
 
-<p class="instructions">
-    <a asp-action="Create">Create a New Log</a>
-</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <p class="instructions">
+        <a asp-action="Create">Create a New Log</a>
+    </p>
+}
+else
+{
+    <p class="instructions">
+        <a asp-area="Identity" asp-page="/Account/Login">Log in to log your workouts</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -42,11 +51,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.WorkoutExercise.Exercise.ExerciseName)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LogId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LogId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LogId">Delete</a>
-            </td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LogId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.LogId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.LogId">Delete</a>
+                </td>
+            }
         </tr>
 }
     </tbody>

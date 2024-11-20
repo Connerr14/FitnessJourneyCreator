@@ -6,10 +6,20 @@
 
 <h1>Your Workouts</h1>
 
-<p class="instructions">
-    <a asp-action="Create">Create New</a>
-    <a asp-controller="WorkoutExercises" asp-action="Index">Add Exercises to Your Workouts</a>
-</p>
+@if (User.Identity.IsAuthenticated) {
+    <p class="instructions">
+        <a asp-action="Create">Create New</a>
+        <a asp-controller="WorkoutExercises" asp-action="Index">Add Exercises to Your Workouts</a>
+    </p>
+}
+else
+{
+    <p class="instructions">
+        <a asp-area="Identity" asp-page="/Account/Login">Log in to customize plan details</a>
+        <a asp-controller="WorkoutExercises" asp-action="Index">See the Exercises</a>
+    </p>
+
+}
 <table class="table">
     <thead>
         <tr>
@@ -37,11 +47,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Microcycle.MicrocycleName)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.WorkoutId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.WorkoutId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.WorkoutId">Delete</a>
-            </td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.WorkoutId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.WorkoutId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.WorkoutId">Delete</a>
+                </td>
+            }
         </tr>
 }
     </tbody>

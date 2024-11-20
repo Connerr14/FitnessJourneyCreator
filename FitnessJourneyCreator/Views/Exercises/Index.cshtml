@@ -6,9 +6,19 @@
 
 <h1>Exercises</h1>
 
-<p class="instructions">
-    <a asp-action="Create">Add a New Exercise</a>
-</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <p class="instructions">
+        <a asp-action="Create">Add a New Exercise</a>
+    </p>
+}
+else
+{
+    <p class="instructions">
+        <a asp-area="Identity" asp-page="/Account/Login">Log in to customize plan details</a>
+    </p>
+
+}
 <table class="table">
     <thead>
         <tr>
@@ -36,11 +46,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DemostrationLink)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ExerciseId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ExerciseId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ExerciseId">Delete</a>
-            </td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ExerciseId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ExerciseId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ExerciseId">Delete</a>
+                </td>
+            }
         </tr>
 }
     </tbody>
