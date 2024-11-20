@@ -12,7 +12,7 @@ namespace FitnessJourneyCreator.Models
         public required string WorkoutName { get; set; }
 
         [Required(ErrorMessage = "Please provide the day that the workout will take place")]
-        [Display(Name = "Workout Day (Sunday = 1, Saturday = 7)")]
+        [Display(Name = "Workout Day")]
         public int WorkoutDay { get; set; }  // For specifying which day of the week
 
 

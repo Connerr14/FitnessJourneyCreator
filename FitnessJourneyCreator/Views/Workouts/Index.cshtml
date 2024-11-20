@@ -42,7 +42,36 @@ else
                 @Html.DisplayFor(modelItem => item.WorkoutName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WorkoutDay)
+
+                @if (item.WorkoutDay == 2)
+                {
+                    <text>Monday</text>
+                }
+                else if (item.WorkoutDay == 3)
+                {
+                    <text>Tuesday</text>
+                }
+                else if (item.WorkoutDay == 4)
+                {
+                    <text>Wednesday</text>
+                }
+                else if (item.WorkoutDay == 5)
+                {
+                    <text>Thursday</text>
+                }
+                else if (item.WorkoutDay == 6)
+                {
+                    <text>Friday</text>
+                }
+                else if (item.WorkoutDay == 7)
+                {
+                    <text>Saturday</text>
+                }
+                else if (item.WorkoutDay == 1)
+                {
+                    <text>Sunday</text>
+                        
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Microcycle.MicrocycleName)

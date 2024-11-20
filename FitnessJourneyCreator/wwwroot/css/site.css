@@ -45,3 +45,16 @@ h1 {
 footer {
     background-color: #D2D2CF !important;
 }
+
+.dayIdentifier {
+    margin-bottom: -0.1em;
+}
+
+.form-group .dayIdentifier {
+    font-size: 1.1em;
+}
+
+.col-sm-2 .dayIdentifier {
+    font-size: 0.5em;
+    margin-bottom: 0.5em;
+}
