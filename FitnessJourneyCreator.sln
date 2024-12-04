@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessJourneyCreatorTests", "FitnessJourneyCreatorTests\FitnessJourneyCreatorTests.csproj", "{C6FDC94C-69DB-4182-BCF3-0C0F42161588}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{A932A5E2-24DC-4745-A212-0C2E4A34BCE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A932A5E2-24DC-4745-A212-0C2E4A34BCE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A932A5E2-24DC-4745-A212-0C2E4A34BCE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6FDC94C-69DB-4182-BCF3-0C0F42161588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FDC94C-69DB-4182-BCF3-0C0F42161588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FDC94C-69DB-4182-BCF3-0C0F42161588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FDC94C-69DB-4182-BCF3-0C0F42161588}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

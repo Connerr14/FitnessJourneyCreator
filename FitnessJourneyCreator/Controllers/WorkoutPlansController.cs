@@ -49,7 +49,7 @@ namespace FitnessJourneyCreator.Controllers
         // GET: WorkoutPlans/Create
         public IActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: WorkoutPlans/Create
@@ -65,7 +65,7 @@ namespace FitnessJourneyCreator.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(workoutPlan);
+            return View("Create", workoutPlan);
         }
 
         // GET: WorkoutPlans/Edit/5
