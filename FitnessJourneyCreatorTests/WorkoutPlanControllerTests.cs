@@ -153,11 +153,9 @@ namespace FitnessJourneyCreatorTests
                 CreatedAt = DateTime.Now
             };
 
-            var result = controller.Create(invalidPlan);
-
-
             controller.ModelState.AddModelError("PlanDescription", "Plan description is not valid.");
 
+            var result = controller.Create(invalidPlan);
 
             Assert.AreEqual(3, _context.WorkoutPlans.Count());
 
