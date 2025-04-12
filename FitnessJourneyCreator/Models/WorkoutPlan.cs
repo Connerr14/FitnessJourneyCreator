@@ -18,6 +18,18 @@ namespace FitnessJourneyCreator.Models
         [Display(Name = "Date of Creation")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+        public required string Goal { get; set; }
+
+        [Display(Name = "Number of Weeks")]
+        public int DurationWeeks { get; set; }
+
+
+
+        public double Price { get; set; }
+
+        [Display(Name = "Creator")]
+        public required string CreatorName { get; set; }
+
         // Linking PlanId to Macrocycle table
         public List<Macrocycle>? Macrocycles { get; set; }
     }

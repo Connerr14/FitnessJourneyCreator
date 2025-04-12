@@ -1,0 +1,13 @@
+﻿@model IEnumerable<FitnessJourneyCreator.Models.WorkoutPlan>
+
+@foreach (var program in Model)
+{
+    <div class="card mb-3 p-3">
+        <h4>@program.PlanName</h4>
+        <p>@program.PlanDescription</p>
+        <p><strong>Goal:</strong> @program.Goal</p>
+        <p><strong>Duration:</strong> @program.DurationWeeks weeks</p>
+        <p><strong>Price:</strong> @program.Price.ToString("C")</p>
+        <a class="btn btn-primary" href="#">Start Program</a>
+    </div>
+}
